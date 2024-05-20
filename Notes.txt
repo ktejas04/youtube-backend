@@ -63,3 +63,18 @@ We are using middleware "pre" to has the password(encrypt it) before storing in 
 We can also make/inject methods like middlewares
 
 JWT - a bearer token, whoever has it can request and get data
+
+update .env file with access and refresh tokens.
+write their methods in user.model.js and use jwt.sign 
+
+Now we will learn about file upload - photo, video, pdf, etc.
+File uploading will not be present in every endpoint. For example, we may need photo upload in register, but never in login
+
+We will use Cloudinary and Multer for file uploading
+We are using Multer for file upload, keeps file from user to our local server temporarily.Cloudinary is SDK(just a service) like AWS. It will take file from local storage(our server) and upload it to the main server.
+
+Write Cloudinary.js.
+import cloudinary and fs. 
+write cloudinary env variables and code for file upload.
+
+Write multer middleware.
