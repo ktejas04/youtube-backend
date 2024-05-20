@@ -48,3 +48,18 @@ we want to overwrite nodejs api error to customize ad standardize it, so that we
 
 create ApiError, ApiResponse
 
+Now we do modelling of user and video
+create their model files
+
+mongodb saves id in bson
+
+in video.model.js, we are using
+aggregation pipeline (mongodb) - study
+after using this we can write aggregation queries instead of just regular queries
+
+install bcypt - a library to hash pwds.
+We are using middleware "pre" to has the password(encrypt it) before storing in DB. For this we are using bcrypt.hash()
+
+We can also make/inject methods like middlewares
+
+JWT - a bearer token, whoever has it can request and get data
