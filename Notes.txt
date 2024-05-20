@@ -30,3 +30,21 @@ diff methods of writing code of connecting db
 
 add dotenv to dev in package.json
 
+import cookie-parser, cors
+.use() - when using middleware/ configuration settings
+in index.js we will write app.use(cors())
+
+some settings are reqd, - data will be coming from multiple sources, json, url, forms
+
+configure json,url,static and cookie-parser
+Middleware - Just a middle man to check if you are eligible/capable of seeing/storing the response
+
+in get, earlier we had only req and res but actually it is err,req,res,next.
+next is just a flag to pass the step to next step
+
+study asyncHandler.js
+
+we want to overwrite nodejs api error to customize ad standardize it, so that we don't have to remember everything
+
+create ApiError, ApiResponse
+
