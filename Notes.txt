@@ -12,3 +12,21 @@ removed this line. check??
 create controllers,db,middleware,models,routes,utils in src
 
 setup prettierrc and prettierignore
+
+connecting DB - mongodb atlas
+a sub-service of mongodb where they provide online db
+
+create cluster, make env variables and copy paste uri
+
+write db_name
+
+install express, mongoose, and dotenv
+
+advice - db connections can give errors.
+1.always wrap them in try catch/ use promises.
+2.db processing takes time(asynchronous). use async await.
+
+diff methods of writing code of connecting db
+
+add dotenv to dev in package.json
+
