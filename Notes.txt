@@ -8,3 +8,7 @@ nodemon - utility to restart server whenever the code is changed and saved. it i
 // "test": "echo \"Error: no test specified\" && exit 1"
 
 removed this line. check?? 
+
+create controllers,db,middleware,models,routes,utils in src
+
+setup prettierrc and prettierignore
