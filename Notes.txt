@@ -1,0 +1,10 @@
+Images will be stored using third-party services
+AWS, Azure, Cloudinary.
+We first store it in our server to prevent data loss and then pass it to ...
+
+
+nodemon - utility to restart server whenever the code is changed and saved. it is a dev dependency, meaning it is used during development and not shipped to production.
+
+// "test": "echo \"Error: no test specified\" && exit 1"
+
+removed this line. check??
