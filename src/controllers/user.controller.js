@@ -24,15 +24,15 @@ const registerUser = asyncHandler(async (req, res) => {
     //Form data/json data can be got using body but not that of url data
     
     // console.log(req.body);
-    const {fullName, email, username, password} = req.body
-    console.log("Email: " , email);
+    const {fullname, email, username, password} = req.body
+    // console.log("Email: " , email);
 
-    // if (fullName === "") {
-    //     throw new ApiError(400, "Fullname is required")
+    // if (fullname === "") {
+    //     throw new ApiError(400, "fullname is required")
     // }
 
     if (
-        [fullName, email, username, password].some((field) => field?.trim() === "")
+        [fullname, email, username, password].some((field) => field?.trim() === "")
         // Study some and this line of code
     ){
         throw new ApiError(400, "All fields are required")
@@ -42,7 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
     //Checking for duplicate user
     
-    const userIsExisting = User.findOne({
+    const userIsExisting = await User.findOne({
         $or: [  //study
             {email},
             {username}
@@ -52,11 +52,17 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(409, "User with this email or username already exists")
     }
 
-    // console.log(res.files);
+    console.log(req.files);
     const avatarLocalPath = req.files?.avatar[0]?.path;
     // at index 0, there is an object(may/may not be), which has a path provided by multer when it uploaded the file on its own server
     //localPath because it is now on our server and not yet on cloudinary
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+    //checking for existence of coverImage
+    let coverImageLocalPath;
+    if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+        coverImageLocalPath = req.files.coverImage[0].path
+    }
 
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is required")
@@ -74,7 +80,7 @@ const registerUser = asyncHandler(async (req, res) => {
     //Registering user in Database and storing reference
 
     const user = await User.create({
-        fullName,
+        fullname,
         avatar: avatar.url,
         coverImage: coverImage?.url || "", //corner-case
         email,
