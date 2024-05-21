@@ -55,7 +55,8 @@ userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next()
     //execute only when password is changed and save is clicked, not when anything is changed and save is clicked.
 
-    this.password = bcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
+    //use await
     next()
 })
 

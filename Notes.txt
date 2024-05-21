@@ -78,10 +78,27 @@ import cloudinary and fs.
 write cloudinary env variables and code for file upload.
 
 Write multer middleware.
+Study docs
 
 HTTP - study
 
 Now we will write controllers
-write user.controller.json
+write user.controller.js
 
 Now create routes
+create register route, login can be done later
+for now there is no middleWare, we are directly calling registerUser
+
+Next we actually register a user
+In user.controller.js, think about the steps of registering an user, the diff possible cases
+req.body is provided by express
+study req.body, print the data, check in postman(POST)
+
+in routes, write middleware using upload(multer)
+write whatever fields you want to take input in, for now avatar and coverImage
+
+now in controller, check for valid data
+check for duplicate user.
+multer provides us with req.files
+
+for rest steps, check controller file comments.

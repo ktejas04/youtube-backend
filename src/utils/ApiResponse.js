@@ -7,3 +7,5 @@ class ApiResponse{
         //setting standard for ourselves, as code greater than 400 is used for error messages
     }
 }
+
+export { ApiResponse }
