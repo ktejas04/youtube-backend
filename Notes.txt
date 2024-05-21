@@ -78,3 +78,10 @@ import cloudinary and fs.
 write cloudinary env variables and code for file upload.
 
 Write multer middleware.
+
+HTTP - study
+
+Now we will write controllers
+write user.controller.json
+
+Now create routes
