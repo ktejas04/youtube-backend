@@ -176,7 +176,24 @@ const loginUser = asyncHandler(async (req,res) => {
     //access and refresh tokens
     //create a method as this step maybe used multiple times
     //destructure and accept 
+    // if (user) {
+    //     return res.status(200).json(
+    //         new ApiResponse(200, user, "User logged in successfully")
+    //     )
+    // }
+    // try {
+    //     const {accessToken, refreshToken} = await generateAccessAndRefreshTokens(user._id)
+    //     console.log(accessToken,"\n", refreshToken);
+    //     let a = accessToken;
+    // } catch (error) {
+        //     console.log(error);
+        // }
     const {accessToken, refreshToken} = await generateAccessAndRefreshTokens(user._id)
+    // if (accessToken && refreshToken) {  
+    // console.log(accessToken, refreshToken);
+    // }
+    // else
+    // console.log("NULL");
 
     //Send to cookies of web browser
 
