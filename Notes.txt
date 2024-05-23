@@ -116,3 +116,6 @@ password has been encrypted
 now in cloudinary, unlink the file's path after it has been uploaded.
 console log response, req.body, req.files
 
+since cookie is 2-way, we can also access req.cookie
+cookieParser is middleware
+
