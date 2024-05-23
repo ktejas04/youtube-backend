@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 
 //as it is middleware, we need next
 export const verifyJWT = asyncHandler(async (req, _, next) => {
-    //as res is not use, write _
+    //as res is not used, write _
     //two scenarios, either it could be our cookie injected through server, or a custom header that the user has used for mobile screens
     //Format of header - Authorization: Bearer <token>
     //Replace "Bearer " with "" to get token value

@@ -119,3 +119,12 @@ console log response, req.body, req.files
 since cookie is 2-way, we can also access req.cookie
 cookieParser is middleware
 
+ACCESS and REFRESH tokens
+
+Access - short-lived, 1day. After 1 day, user will have to re-enter loginID pwd and geberate new access token
+Refresh - session storage
+study more
+
+We have to provide api endpoint to frontend developer from where he can refresh the tokens
+Add controller for that
+
