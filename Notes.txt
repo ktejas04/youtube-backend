@@ -128,3 +128,6 @@ study more
 We have to provide api endpoint to frontend developer from where he can refresh the tokens
 Add controller for that
 
+Create subscription model
+
+Keep seperate controllers and endpoints for file updations.
