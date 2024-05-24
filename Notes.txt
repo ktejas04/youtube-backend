@@ -140,3 +140,7 @@ For no of channels, select user and count channel documents number
 
 
 Study aggregration pipelines
+
+req.user._id - gives us the string value of id, the literal value. as we use mongoose, it self-adds ObjectID() to it.
+
+Check sub-pipeline on different positions
