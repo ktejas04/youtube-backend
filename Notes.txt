@@ -131,3 +131,12 @@ Add controller for that
 Create subscription model
 
 Keep seperate controllers and endpoints for file updations.
+
+TODO - Add controller for deleting old avatar image
+
+Subscription Schema
+For counting subscribers, select channels and count subscriber document number.
+For no of channels, select user and count channel documents number
+
+
+Study aggregration pipelines

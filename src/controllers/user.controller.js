@@ -437,6 +437,82 @@ const updateUserCoverImage = asyncHandler( async(req,res) => {
     )
 })
 
+//Aggregation Pipelines
+const getUserChannelProfile = asyncHandler(async(req,res) => {
+    const {username} = req.params
+
+    if (!username?.trim()) {
+        throw new ApiError(400, "Username is required")
+    }
+
+    //channel type is Arrray
+    const channel = await User.aggregate([
+        { //1st pipeline - matched user profile
+            $match: {
+                username: username?.toLowerCase()
+            }
+        },
+        { //2nd pipeline - counted subscribers
+            $lookup: {
+                from: "subscriptions", //lowercase and add "s"
+                localField: "_id",
+                foreignField: "channel",
+                as: "subscribers"
+            }
+        },
+        { //3rd pipeline - counted subscribed channels
+            $lookup: {
+                from: "subscriptions", //lowercase and add "s"
+                localField: "_id",
+                foreignField: "subscriber",
+                as: "subscribedTo"
+            }
+        },
+        { //4th pipeline - added the two fields to user
+            $addFields: {
+                subscribersCount: {
+                    $size: "$subscribers"
+                },
+                channelsSubscribedToCount: {
+                    $size: "$subscribedTo"
+                },
+                isSubscribed: {
+                    $cond: {
+                        if: {$in: [req.user?._id, "$subscribers.subscriber"]},
+                        then: true,
+                        else: false
+                    }
+                }
+            },
+        },
+        { //5th pipeline - projected fields
+            $project: {
+                //selected fields are given back
+                fullname: 1,
+                username: 1,
+                subscribersCount: 1,
+                channelsSubscribedToCount: 1,
+                isSubscribed: 1,
+                avatar: 1,
+                coverImage: 1,
+                email: 1
+            }
+        }
+    ])
+
+    //checking if execution was successful
+    if (!channel?.length) {
+        throw new ApiError(404, "Channel not found")
+    }
+
+    // console.log(channel);
+
+    return res.status(200).json(
+        new ApiResponse(200, channel[0], "Channel profile fetched successfully")
+    )
+    // User.find({username}) - long process
+})
+
 export {
     registerUser,
     loginUser,
